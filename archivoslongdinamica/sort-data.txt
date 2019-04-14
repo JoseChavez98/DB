@@ -1,0 +1,1 @@
+Nombre|Apellidos|Carrera|Mensualidad|ID|ID_before|ID_after
