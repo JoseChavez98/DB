@@ -18,6 +18,18 @@ std::pair<std::string, std::string> split(std::string line, std::string delimite
     return sub_strings;
 }
 
+void normalize(std::string &word)
+{
+    for (auto &&i : word)
+    {
+        if (i >= 65 && i <= 92)
+        {
+            i = i + 32;
+        }
+    }
+}
+
+
 std::vector<std::string> splitWord(std::string line)
 {
     std::vector<std::string> words;
@@ -48,12 +60,14 @@ void checkSpecialCharacters(std::string &word)
     std::string special_character[] = {"@", "/", ",", ".", "#", "\"", "_", "-", "[", "]", "{", "}", "?", "!", "¿", ":", ";"};
     while (findInVector(word, special_character) != -1)
     {
+
         int pos = findInVector(word, special_character);
         std::string delimiter = special_character[pos];
         std::string token = word.substr(0, word.find(delimiter));
         word.erase(0, word.find(delimiter) + delimiter.length());
         word = token + word;
     }
+    //normalize(word);
 }
 
 bool checkIfStop(std::map<std::string, bool> the_map, std::string word)
@@ -82,6 +96,7 @@ void printInvertedIndex(std::map<std::string, std::map<std::string, double>> inv
     }
 }
 
+
 int main()
 {
     std::map<std::string, bool> stop_words;
@@ -105,6 +120,7 @@ int main()
             if (checkIfStop(stop_words, word) == false)
             {
                 checkSpecialCharacters(word);
+                normalize(word);
                 inverted_index[word][substr.first] += 1;
             }
         }
@@ -118,6 +134,7 @@ int main()
     auto vec_query = splitWord(query_text);
     for (auto &word : vec_query)
     {
+        normalize(word);
         query[word] += 1;
     }
     for (auto &i : query)
@@ -185,6 +202,8 @@ int main()
 
     for (auto &&i : result)
     {
-        std::cout << i << " va uno " << std::endl;
+        std::cout << i << std::endl;
     }
+
+    
 }
