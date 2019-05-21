@@ -109,11 +109,13 @@ int main()
     }
 
     std::map<std::string, std::map<std::string, unsigned long int>> inverted_index;
+    std::map<std::string,std::string>storage;
     std::string data;
     int cont = 0;
     while (std::getline(std::cin, data))
     {
         std::pair<std::string, std::string> substr = split(data, "|");
+        storage[substr.first]=substr.second;
         auto line = splitWord(substr.second);
         for (auto &word : line)
         {
@@ -202,7 +204,7 @@ int main()
 
     for (auto &&i : result)
     {
-        std::cout << i << std::endl;
+        std::cout << "- "<<storage[i] << std::endl;
     }
 
     
