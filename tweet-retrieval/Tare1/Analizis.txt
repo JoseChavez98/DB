@@ -42,5 +42,8 @@ Top 10:
 - @MunozYaSabe @JorgeMunozAP @AdelanteLima @ap_bancada @AccionPopular @MunozaLima @AccionPopularAP @JorgeJovenes @AccionPopularLo @AccionPopularPe @p_accionpopular Urresti? 🤦🏻‍♀️🤦🏻‍♀️👀
 
 
+######################################################################################
+######### Breve Analizis ###################################################################
+######################################################################################
 
-
+Nuestro algoritmo definitivamente es costoso, esto por que se trabaja en memoria secundaria, hemos investigado a cerca de ciertos algoritmos que hacen mas eficiente la busqueda. Uno que seria ventajoso utilizar seria el de R-tree, el cual optimiza la parte de busqueda, dandonos mucha mas rapidez de ejecucion y bajo costo/timempo.
